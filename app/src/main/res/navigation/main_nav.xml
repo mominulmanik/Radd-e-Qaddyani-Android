@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.radd_e_qadyyani.Fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action android:id="@+id/homeFragment_qAction"
+            app:destination="@+id/questionFragment">
+            <argument
+                android:name="questionList"
+                app:argType="string[]"
+                app:nullable="true"/>
+        </action>
+        <action android:id="@+id/homeFragment_aAction"
+            app:destination="@+id/answerFragment">
+            <argument
+                android:name="answerList"
+                app:argType="string[]"
+                app:nullable="true"/>
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.example.radd_e_qadyyani.Fragments.QuestionFragment"
+        android:label="fragment_question"
+        tools:layout="@layout/fragment_question">
+    </fragment>
+    <fragment
+        android:id="@+id/answerFragment"
+        android:name="com.example.radd_e_qadyyani.Fragments.AnswerFragment"
+        android:label="fragment_answer"
+        tools:layout="@layout/fragment_answer">
+    </fragment>
+</navigation>
