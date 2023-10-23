@@ -45,8 +45,9 @@ class AnswerAdapter(private val dataSet: ArrayList<String>, var isStatistics: Bo
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        holder.textView.text = dataSet[position]
-        val spannedText = Html.fromHtml(dataSet[position])
+        val spannedText = Html.fromHtml(dataSet[position], 0)
         holder.textView.text = spannedText
+        holder.textView.setTextIsSelectable(true)
 
         // Make the link clickable
         holder.textView.movementMethod = LinkMovementMethod.getInstance()
