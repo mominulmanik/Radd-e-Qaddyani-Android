@@ -22,6 +22,10 @@
                 android:name="answerList"
                 app:argType="string[]"
                 app:nullable="true"/>
+            <argument
+                android:name="questionTitle"
+                app:argType="string"
+                app:nullable="true"/>
         </action>
     </fragment>
     <fragment
@@ -29,6 +33,17 @@
         android:name="com.example.radd_e_qadyyani.Fragments.QuestionFragment"
         android:label="fragment_question"
         tools:layout="@layout/fragment_question">
+        <action android:id="@+id/questionFragment_aAction"
+            app:destination="@+id/answerFragment">
+            <argument
+                android:name="answerList"
+                app:argType="string[]"
+                app:nullable="true"/>
+            <argument
+                android:name="questionTitle"
+                app:argType="string"
+                app:nullable="true"/>
+        </action>
     </fragment>
     <fragment
         android:id="@+id/answerFragment"

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.radd_e_qadyyani.Model.QuestionAnswer
 import com.example.radd_e_qadyyani.R
 
-class QuestionAdapter(private val dataSet: ArrayList<QuestionAnswer>): RecyclerView.Adapter<QuestionAdapter.ViewHolder>()  {
+class HomeAdapter(private val dataSet: ArrayList<String>): RecyclerView.Adapter<HomeAdapter.ViewHolder>()  {
 
     var onItemClick: ((position: Int) -> Unit)? = null
 
@@ -23,7 +23,7 @@ class QuestionAdapter(private val dataSet: ArrayList<QuestionAnswer>): RecyclerV
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = dataSet[position].question
+        holder.textView.text = dataSet[position]
         holder.qCardView.setOnClickListener {
             Log.d("TAG", "onBindViewHolder: $position")
             onItemClick?.invoke(position)
