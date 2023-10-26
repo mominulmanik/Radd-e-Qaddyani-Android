@@ -41,7 +41,7 @@ class AnswerFragment : Fragment() {
         val title = arguments?.getString("questionTitle", "")
         val dataset = arguments?.getStringArrayList("answerList")
 
-        val answerAdapter = dataset?.let { AnswerAdapter(it, title?.contains("বিভাগ") == true) }
+        val answerAdapter = dataset?.let { AnswerAdapter(it) }
 
         val recyclerView: RecyclerView = view.findViewById(R.id.answerRV)
         val backButton: ImageView = view.findViewById(R.id.backButton)

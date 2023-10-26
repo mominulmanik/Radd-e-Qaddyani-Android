@@ -18,49 +18,77 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.radd_e_qadyyani.R
 
-class AnswerAdapter(private val dataSet: ArrayList<String>, var isStatistics: Boolean = false): RecyclerView.Adapter<AnswerAdapter.ViewHolder>()  {
+class AnswerAdapter(private val dataSet: ArrayList<String>): RecyclerView.Adapter<AnswerAdapter.ViewHolder>()  {
 
     var onShareClick: ((position: Int) -> Unit)? = null
     var onCopyClick: ((position: Int) -> Unit)? = null
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
-        val shareIcon: ImageView
-        val copyIcon: ImageView
-        val itemll: LinearLayout
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val textView: TextView = itemView.findViewById(R.id.answerTV)
+        private val webTextView: TextView = itemView.findViewById(R.id.answerWbTV)
+        private val shareIcon: ImageView = itemView.findViewById(R.id.shareIcon)
+        private val copyIcon: ImageView = itemView.findViewById(R.id.copyIcon)
+        private val itemll: LinearLayout = itemView.findViewById(R.id.shareOptionll)
 
         init {
-            // Define click listener for the ViewHolder's View
-            textView = view.findViewById(R.id.answerTV)
-            shareIcon = view.findViewById(R.id.shareIcon)
-            copyIcon = view.findViewById(R.id.copyIcon)
-            itemll = view.findViewById(R.id.shareOptionll)
+        }
+
+        fun bind(data: String, position: Int, onShareClick: ((position: Int) -> Unit)? = null, onCopyClick: ((position: Int) -> Unit)? = null) {
+            val spannedText = Html.fromHtml(data, 0)
+            webTextView.visibility = View.GONE
+            textView.visibility = View.VISIBLE
+            textView.text = spannedText
+            textView.setOnClickListener {
+                if (itemll.visibility == View.GONE) {
+                    itemll.visibility = View.VISIBLE
+                } else {
+                    itemll.visibility = View.GONE
+                }
+            }
+            shareIcon.setOnClickListener {
+                onShareClick?.invoke(position)
+            }
+            copyIcon.setOnClickListener {
+                onCopyClick?.invoke(position)
+            }
+        }
+
+        fun bindWebText(data: String, position: Int, onShareClick: ((position: Int) -> Unit)? = null, onCopyClick: ((position: Int) -> Unit)? = null) {
+            val spannedText = Html.fromHtml(data, 0)
+            webTextView.visibility = View.VISIBLE
+            textView.visibility = View.GONE
+            webTextView.text = spannedText
+            webTextView.setOnClickListener {
+                if (itemll.visibility == View.GONE) {
+                    itemll.visibility = View.VISIBLE
+                } else {
+                    itemll.visibility = View.GONE
+                }
+            }
+            shareIcon.setOnClickListener {
+                onShareClick?.invoke(position)
+            }
+            copyIcon.setOnClickListener {
+                onCopyClick?.invoke(position)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.answer_item, parent, false)
-
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.textView.text = dataSet[position]
-        val spannedText = Html.fromHtml(dataSet[position], 0)
-        holder.textView.text = spannedText
-        holder.textView.setOnClickListener {
-            if (holder.itemll.visibility == View.GONE) {
-                holder.itemll.visibility = View.VISIBLE
-            } else {
-                holder.itemll.visibility = View.GONE
-            }
+        var text = dataSet[position]
+        if (!text.contains("<p>")) {
+            text = "<p>$text</p>"
         }
-        holder.shareIcon.setOnClickListener {
-            onShareClick?.invoke(position)
-        }
-        holder.copyIcon.setOnClickListener {
-            onCopyClick?.invoke(position)
+        if (text.contains("www.") || text.contains("https:")) {
+            holder.bindWebText(text, position, onShareClick, onCopyClick)
+        } else {
+            holder.bind(text, position, onShareClick, onCopyClick)
         }
     }
 
