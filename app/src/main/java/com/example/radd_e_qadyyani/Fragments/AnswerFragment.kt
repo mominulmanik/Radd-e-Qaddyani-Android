@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -20,6 +21,7 @@ import com.example.radd_e_qadyyani.R
 
 class AnswerFragment : Fragment() {
 
+    var isShareOptionsVisible = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,10 +45,31 @@ class AnswerFragment : Fragment() {
 
         val recyclerView: RecyclerView = view.findViewById(R.id.answerRV)
         val backButton: ImageView = view.findViewById(R.id.backButton)
+        val shareButton: ImageView = view.findViewById(R.id.shareButton)
         val titleTV: TextView = view.findViewById(R.id.answerTitleTV)
+        val sharell: LinearLayout = view.findViewById(R.id.shareOptionll2)
+        val copyIcon: ImageView = view.findViewById(R.id.copyIcon2)
+        val shareIcon: ImageView = view.findViewById(R.id.shareIcon2)
         titleTV.text = title
         backButton.setOnClickListener{
             findNavController().navigateUp()
+        }
+        shareButton.setOnClickListener{
+            if (sharell.visibility == View.VISIBLE) {
+                sharell.visibility = View.GONE
+            } else {
+                sharell.visibility = View.VISIBLE
+            }
+        }
+        copyIcon.setOnClickListener {
+            if (dataset != null) {
+                copyClipBoard(removeHtmlTags(dataset.joinToString(separator = "\n")))
+            }
+        }
+        shareIcon.setOnClickListener {
+            if (dataset != null) {
+                shareAction(removeHtmlTags(dataset.joinToString(separator = "\n")))
+            }
         }
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -83,6 +106,7 @@ class AnswerFragment : Fragment() {
     }
 
     fun removeHtmlTags(input: String): String {
-        return input.replace(Regex("<.*?>"), "")
+        val normalText = input.replace(Regex("<.*?>"), "")
+        return   normalText.replace("&[^;]*;".toRegex(), " ")
     }
 }

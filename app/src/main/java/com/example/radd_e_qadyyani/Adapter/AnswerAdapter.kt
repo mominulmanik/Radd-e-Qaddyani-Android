@@ -1,8 +1,11 @@
 package com.example.radd_e_qadyyani.Adapter
 
 import android.graphics.Color
+import android.graphics.text.LineBreaker
+import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
 import android.opengl.Visibility
 import android.text.Html
+import android.text.Layout.JUSTIFICATION_MODE_INTER_WORD
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
 import android.text.style.ForegroundColorSpan
@@ -19,7 +22,6 @@ class AnswerAdapter(private val dataSet: ArrayList<String>, var isStatistics: Bo
 
     var onShareClick: ((position: Int) -> Unit)? = null
     var onCopyClick: ((position: Int) -> Unit)? = null
-    var willShowShareIcon = false
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView
@@ -47,19 +49,10 @@ class AnswerAdapter(private val dataSet: ArrayList<String>, var isStatistics: Bo
 //        holder.textView.text = dataSet[position]
         val spannedText = Html.fromHtml(dataSet[position], 0)
         holder.textView.text = spannedText
-        holder.textView.setTextIsSelectable(true)
-
-        // Make the link clickable
-        holder.textView.movementMethod = LinkMovementMethod.getInstance()
         holder.textView.setOnClickListener {
-            willShowShareIcon = !willShowShareIcon
-            if (willShowShareIcon) {
-                holder.shareIcon.visibility = View.VISIBLE
-                holder.copyIcon.visibility = View.VISIBLE
+            if (holder.itemll.visibility == View.GONE) {
                 holder.itemll.visibility = View.VISIBLE
             } else {
-                holder.shareIcon.visibility = View.GONE
-                holder.copyIcon.visibility = View.GONE
                 holder.itemll.visibility = View.GONE
             }
         }

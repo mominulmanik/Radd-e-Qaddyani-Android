@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,9 +13,12 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:justificationMode="inter_word"
+        android:autoLink="web"
         android:textColor="@color/black"
         android:textSize="17sp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:paddingEnd="5dp"
+        tools:ignore="RtlSymmetry" />
 
     <LinearLayout
         android:id="@+id/shareOptionll"
@@ -30,12 +34,12 @@
             android:layout_height="22dp"
             app:srcCompat="@drawable/share_icon"
             android:layout_marginEnd="10dp"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/copyIcon"
             android:layout_width="20dp"
             android:layout_height="20dp"
             app:srcCompat="@drawable/copy_icon_v1"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
     </LinearLayout>
 </LinearLayout>
