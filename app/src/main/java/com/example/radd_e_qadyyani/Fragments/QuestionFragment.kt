@@ -53,7 +53,7 @@ class QuestionFragment : Fragment() {
         recyclerView.adapter = questionAdapter
         questionAdapter?.onItemClick = {
             requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                R.id.questionFragment_aAction,
+                R.id.questionFragment_aAction1,
                 Bundle().apply {
                     putStringArrayList("answerList", dataset[it].answer)
                     putString("questionTitle", dataset[it].question)
