@@ -6,9 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,7 +44,7 @@ class HomeFragment : Fragment() {
         homeAdapter.onItemClick = {
             if (it == 0) {
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_aAction,
+                    R.id.homeFragment_aAction1,
                     Bundle().apply {
                         putStringArrayList("answerList", Constant().mainTopic1)
                         putString("questionTitle", mainTopicList[it])
@@ -55,7 +52,7 @@ class HomeFragment : Fragment() {
             } else if (it == 1) {
                 val qaList = readDataFromJson("qadyyani2.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_qAction,
+                    R.id.homeFragment_qAction1,
                     Bundle().apply {
                         putSerializable("questionList", qaList?.questions)
                         putString("questionTitle", mainTopicList[it])
@@ -63,7 +60,7 @@ class HomeFragment : Fragment() {
             } else if (it == 2) {
                 val qaList = readDataFromJson("qadyyani7.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_qAction,
+                    R.id.homeFragment_qAction1,
                     Bundle().apply {
                         putSerializable("questionList", qaList?.questions)
                         putString("questionTitle", mainTopicList[it])
@@ -71,7 +68,7 @@ class HomeFragment : Fragment() {
             } else if (it == 3) {
                 val qaList = readDataFromJson("qadyyani4.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_qAction,
+                    R.id.homeFragment_qAction1,
                     Bundle().apply {
                         putSerializable("questionList", qaList?.questions)
                         putString("questionTitle", mainTopicList[it])
@@ -79,7 +76,7 @@ class HomeFragment : Fragment() {
             } else if (it == 4) {
                 val qaList = readDataFromJson("qadyyani5.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_qAction,
+                    R.id.homeFragment_qAction1,
                     Bundle().apply {
                         putSerializable("questionList", qaList?.questions)
                         putString("questionTitle", mainTopicList[it])
@@ -87,7 +84,7 @@ class HomeFragment : Fragment() {
             } else if (it == 5) {
                 val qaList = readDataFromJson("qadyyani6.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_aAction,
+                    R.id.homeFragment_aAction1,
                     Bundle().apply {
                         putSerializable("answerList", qaList?.questions?.get(0)?.answer)
                         putString("questionTitle", mainTopicList[it])
@@ -95,7 +92,7 @@ class HomeFragment : Fragment() {
             } else if (it == 6) {
                 val qaList = readDataFromJson("qadyyani9.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_qAction,
+                    R.id.homeFragment_qAction1,
                     Bundle().apply {
                         putSerializable("questionList", qaList?.questions)
                         putString("questionTitle", mainTopicList[it])
@@ -103,7 +100,7 @@ class HomeFragment : Fragment() {
             } else if (it == 7) {
                 val qaList = readDataFromJson("qadyyani8.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_qAction,
+                    R.id.homeFragment_qAction1,
                     Bundle().apply {
                         putSerializable("questionList", qaList?.questions)
                         putString("questionTitle", mainTopicList[it])

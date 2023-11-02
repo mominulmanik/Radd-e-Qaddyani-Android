@@ -9,14 +9,14 @@
         android:name="com.example.radd_e_qadyyani.Fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
-        <action android:id="@+id/homeFragment_qAction"
+        <action android:id="@+id/homeFragment_qAction1"
             app:destination="@+id/questionFragment">
             <argument
                 android:name="questionList"
                 app:argType="string[]"
                 app:nullable="true"/>
         </action>
-        <action android:id="@+id/homeFragment_aAction"
+        <action android:id="@+id/homeFragment_aAction1"
             app:destination="@+id/answerFragment">
             <argument
                 android:name="answerList"
@@ -33,7 +33,7 @@
         android:name="com.example.radd_e_qadyyani.Fragments.QuestionFragment"
         android:label="fragment_question"
         tools:layout="@layout/fragment_question">
-        <action android:id="@+id/questionFragment_aAction"
+        <action android:id="@+id/questionFragment_aAction1"
             app:destination="@+id/answerFragment">
             <argument
                 android:name="answerList"
