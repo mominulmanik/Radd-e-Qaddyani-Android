@@ -65,6 +65,7 @@ class AnswerAdapter(private val dataSet: ArrayList<String>): RecyclerView.Adapte
                     itemll.visibility = View.GONE
                 }
             }
+            webTextView.movementMethod = LinkMovementMethod.getInstance()
             shareIcon.setOnClickListener {
                 onShareClick?.invoke(position)
             }
@@ -82,12 +83,13 @@ class AnswerAdapter(private val dataSet: ArrayList<String>): RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var text = dataSet[position]
-        if (!text.contains("<p>")) {
-            text = "<p>$text</p>"
-        }
         if (text.contains("www.") || text.contains("https:")) {
             holder.bindWebText(text, position, onShareClick, onCopyClick)
         } else {
+            val pattern = "\\[(\\d+)\\]".toRegex()
+            if (!text.contains("<p>") && !text.contains(pattern)) {
+                text = "<p>$text</p>"
+            }
             holder.bind(text, position, onShareClick, onCopyClick)
         }
     }
