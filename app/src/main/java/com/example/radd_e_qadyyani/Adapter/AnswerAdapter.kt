@@ -58,13 +58,6 @@ class AnswerAdapter(private val dataSet: ArrayList<String>): RecyclerView.Adapte
             webTextView.visibility = View.VISIBLE
             textView.visibility = View.GONE
             webTextView.text = spannedText
-            webTextView.setOnClickListener {
-                if (itemll.visibility == View.GONE) {
-                    itemll.visibility = View.VISIBLE
-                } else {
-                    itemll.visibility = View.GONE
-                }
-            }
             webTextView.movementMethod = LinkMovementMethod.getInstance()
             shareIcon.setOnClickListener {
                 onShareClick?.invoke(position)

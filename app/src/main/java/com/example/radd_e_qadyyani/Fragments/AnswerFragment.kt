@@ -76,12 +76,26 @@ class AnswerFragment : Fragment() {
         recyclerView.adapter = answerAdapter
         if (answerAdapter != null) {
             answerAdapter.onShareClick = {
-                shareAction(removeHtmlTags(dataset[it]))
+                val pattern = "\\[(\\d+)\\]".toRegex()
+                if (!dataset[it].contains(pattern)) {
+                    shareAction(removeHtmlTags(dataset[it]))
+                } else {
+                    val string = removeHtmlTags(dataset[it])
+                    val linkString = linkStringList(dataset[it+1])
+                    shareAction(removeHtmlTags("$string, $linkString"))
+                }
             }
         }
         if (answerAdapter != null) {
             answerAdapter.onCopyClick = {
-                copyClipBoard(removeHtmlTags(dataset[it]))
+                val pattern = "\\[(\\d+)\\]".toRegex()
+                if (!dataset[it].contains(pattern)) {
+                    copyClipBoard(removeHtmlTags(dataset[it]))
+                } else {
+                    val string = removeHtmlTags(dataset[it])
+                    val linkString = linkStringList(dataset[it+1])
+                    copyClipBoard(removeHtmlTags("$string, $linkString"))
+                }
             }
         }
     }
@@ -108,5 +122,28 @@ class AnswerFragment : Fragment() {
     fun removeHtmlTags(input: String): String {
         val normalText = input.replace(Regex("<.*?>"), "")
         return   normalText.replace("&[^;]*;".toRegex(), " ")
+    }
+
+    fun extractLinkFromHtml(html: String): String {
+        val regex = """<a\s+[^>]*href\s*=\s*["']([^"']+)["'][^>]*>.*?</a>""".toRegex()
+        val matchResult = regex.find(html)
+
+        if (matchResult != null) {
+            val link = matchResult.groupValues[1]
+            return link
+        }
+        return ""
+    }
+
+    fun linkStringList(html: String): String {
+        val linkList = html.split("<br>")
+        val linkStringList = arrayListOf<String>()
+        var index = 1
+        for (link in linkList) {
+            val linkString = extractLinkFromHtml(link)
+            linkStringList.add("[$index] $linkString")
+            index += 1
+        }
+        return linkStringList.joinToString(", ")
     }
 }
