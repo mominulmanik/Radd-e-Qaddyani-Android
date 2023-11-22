@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.radd_e_qadyyani">
+    package="com.mominul.radd_e_qadyyani">
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,7 @@
         android:theme="@style/Theme.RaddEQadyyani"
         tools:targetApi="31">
         <activity
-            android:name=".SplashActivity"
+            android:name="com.mominul.radd_e_qadyyani.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.mominul.radd_e_qadyyani.MainActivity"
             android:exported="true">
         </activity>
     </application>

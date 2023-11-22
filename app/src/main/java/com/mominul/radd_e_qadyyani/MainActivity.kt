@@ -1,7 +1,8 @@
-package com.example.radd_e_qadyyani
+package com.mominul.radd_e_qadyyani
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.mominul.radd_e_qadyyani.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

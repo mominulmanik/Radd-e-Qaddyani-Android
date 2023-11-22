@@ -1,4 +1,4 @@
-package com.example.radd_e_qadyyani.Adapter
+package com.mominul.radd_e_qadyyani.Adapter
 
 import android.graphics.Color
 import android.graphics.text.LineBreaker
@@ -16,7 +16,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.radd_e_qadyyani.R
+import com.mominul.radd_e_qadyyani.R
 
 class AnswerAdapter(private val dataSet: ArrayList<String>): RecyclerView.Adapter<AnswerAdapter.ViewHolder>()  {
 

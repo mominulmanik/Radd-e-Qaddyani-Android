@@ -1,4 +1,4 @@
-package com.example.radd_e_qadyyani.Fragments
+package com.mominul.radd_e_qadyyani.Fragments
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -16,8 +16,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.radd_e_qadyyani.Adapter.AnswerAdapter
-import com.example.radd_e_qadyyani.R
+import com.mominul.radd_e_qadyyani.Adapter.AnswerAdapter
+import com.mominul.radd_e_qadyyani.R
 
 class AnswerFragment : Fragment() {
 

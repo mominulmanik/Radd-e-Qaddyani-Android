@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragments.AnswerFragment"
+    tools:context="com.mominul.radd_e_qadyyani.Fragments.AnswerFragment"
     android:background="@color/background"
     android:orientation="vertical">
 

@@ -1,10 +1,11 @@
-package com.example.radd_e_qadyyani
+package com.mominul.radd_e_qadyyani
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.mominul.radd_e_qadyyani.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

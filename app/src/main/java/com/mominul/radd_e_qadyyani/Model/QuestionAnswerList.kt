@@ -1,4 +1,4 @@
-package com.example.radd_e_qadyyani.Model
+package com.mominul.radd_e_qadyyani.Model
 
 
 data class QuestionAnswerList(

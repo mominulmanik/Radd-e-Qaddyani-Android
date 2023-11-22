@@ -1,4 +1,4 @@
-package com.example.radd_e_qadyyani
+package com.mominul.radd_e_qadyyani
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.radd_e_qadyyani.Fragments
+package com.mominul.radd_e_qadyyani.Fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -12,11 +12,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.radd_e_qadyyani.Adapter.AnswerAdapter
-import com.example.radd_e_qadyyani.Adapter.QuestionAdapter
-import com.example.radd_e_qadyyani.Model.QuestionAnswer
-import com.example.radd_e_qadyyani.R
-import com.example.radd_e_qadyyani.Utils.Constant
+import com.mominul.radd_e_qadyyani.Adapter.AnswerAdapter
+import com.mominul.radd_e_qadyyani.Adapter.QuestionAdapter
+import com.mominul.radd_e_qadyyani.Model.QuestionAnswer
+import com.mominul.radd_e_qadyyani.R
+import com.mominul.radd_e_qadyyani.Utils.Constant
 
 class QuestionFragment : Fragment() {
 

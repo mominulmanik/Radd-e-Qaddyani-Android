@@ -1,4 +1,4 @@
-package com.example.radd_e_qadyyani.Adapter
+package com.mominul.radd_e_qadyyani.Adapter
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.radd_e_qadyyani.Model.QuestionAnswer
-import com.example.radd_e_qadyyani.R
+import com.mominul.radd_e_qadyyani.Model.QuestionAnswer
+import com.mominul.radd_e_qadyyani.R
 
-class HomeAdapter(private val dataSet: ArrayList<String>): RecyclerView.Adapter<HomeAdapter.ViewHolder>()  {
+class QuestionAdapter(private val dataSet: ArrayList<QuestionAnswer>): RecyclerView.Adapter<QuestionAdapter.ViewHolder>()  {
 
     var onItemClick: ((position: Int) -> Unit)? = null
 
@@ -23,7 +23,7 @@ class HomeAdapter(private val dataSet: ArrayList<String>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = dataSet[position]
+        holder.textView.text = dataSet[position].question
         holder.qCardView.setOnClickListener {
             Log.d("TAG", "onBindViewHolder: $position")
             onItemClick?.invoke(position)
