@@ -92,9 +92,9 @@ class HomeFragment : Fragment() {
             } else if (it == 6) {
                 val qaList = readDataFromJson("qadyyani9.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_qAction1,
+                    R.id.homeFragment_aAction1,
                     Bundle().apply {
-                        putSerializable("questionList", qaList?.questions)
+                        putStringArrayList("answerList", qaList?.questions?.get(0)?.answer)
                         putString("questionTitle", mainTopicList[it])
                     })
             } else if (it == 7) {
