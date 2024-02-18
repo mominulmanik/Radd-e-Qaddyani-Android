@@ -50,6 +50,11 @@ class HomeFragment : Fragment() {
                         putString("questionTitle", mainTopicList[it])
                     })
             } else if (it == 1) {
+                val ansList = readDataFromJson("qadyyani13.json")
+                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
+            } else if (it == 2) {
+                navigateToAnswerScreen(answerList = Constant().mainTopic2, mainTopicList[it])
+            } else if (it == 3) {
                 val qaList = readDataFromJson("qadyyani2.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
                     R.id.homeFragment_qAction1,
@@ -57,7 +62,10 @@ class HomeFragment : Fragment() {
                         putSerializable("questionList", qaList?.questions)
                         putString("questionTitle", mainTopicList[it])
                     })
-            } else if (it == 2) {
+            } else if (it == 4) {
+                val ansList = readDataFromJson("qadyyani14.json")
+                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
+            } else if (it == 5) {
                 val qaList = readDataFromJson("qadyyani7.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
                     R.id.homeFragment_qAction1,
@@ -65,7 +73,7 @@ class HomeFragment : Fragment() {
                         putSerializable("questionList", qaList?.questions)
                         putString("questionTitle", mainTopicList[it])
                     })
-            } else if (it == 3) {
+            } else if (it == 6) {
                 val qaList = readDataFromJson("qadyyani4.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
                     R.id.homeFragment_qAction1,
@@ -73,7 +81,25 @@ class HomeFragment : Fragment() {
                         putSerializable("questionList", qaList?.questions)
                         putString("questionTitle", mainTopicList[it])
                     })
-            } else if (it == 4) {
+            } else if (it == 7) {
+                val ansList = readDataFromJson("qadyyani10.json")
+                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
+            } else if (it == 8) {
+                val ansList = readDataFromJson("qadyyani11.json")
+                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
+            } else if (it == 9) {
+                val ansList = readDataFromJson("qadyyani15.json")
+                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
+            } else if (it == 10) {
+                val ansList = readDataFromJson("qadyyani16.json")
+                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
+            } else if (it == 11) {
+                val ansList = readDataFromJson("qadyyani17.json")
+                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
+            } else if (it == 12) {
+                val ansList = readDataFromJson("qadyyani18.json")
+                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
+            } else if (it == 13) {
                 val qaList = readDataFromJson("qadyyani5.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
                     R.id.homeFragment_qAction1,
@@ -81,7 +107,7 @@ class HomeFragment : Fragment() {
                         putSerializable("questionList", qaList?.questions)
                         putString("questionTitle", mainTopicList[it])
                     })
-            } else if (it == 5) {
+            } else if (it == 14) {
                 val qaList = readDataFromJson("qadyyani6.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
                     R.id.homeFragment_aAction1,
@@ -89,7 +115,10 @@ class HomeFragment : Fragment() {
                         putSerializable("answerList", qaList?.questions?.get(0)?.answer)
                         putString("questionTitle", mainTopicList[it])
                     })
-            } else if (it == 6) {
+            } else if (it == 15) {
+                val qaList = readDataFromJson("qadyyani12.json")
+                navigateToQuestionScreen(qaList = qaList, mainTopicList[it])
+            } else if (it == 16) {
                 val qaList = readDataFromJson("qadyyani9.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
                     R.id.homeFragment_aAction1,
@@ -97,7 +126,9 @@ class HomeFragment : Fragment() {
                         putStringArrayList("answerList", qaList?.questions?.get(0)?.answer)
                         putString("questionTitle", mainTopicList[it])
                     })
-            } else if (it == 7) {
+            } else if (it == 17) {
+                navigateToAnswerScreen(answerList = Constant().mainTopic3, mainTopicList[it])
+            } else if (it == 18) {
                 val qaList = readDataFromJson("qadyyani8.json")
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
                     R.id.homeFragment_qAction1,
@@ -120,5 +151,23 @@ class HomeFragment : Fragment() {
         } catch (e: Exception) {
             null
         }
+    }
+
+    fun navigateToQuestionScreen(qaList: QuestionAnswerList?, title: String) {
+        requireActivity().findNavController(R.id.nav_host_fragment).navigate(
+            R.id.homeFragment_qAction1,
+            Bundle().apply {
+                putSerializable("questionList", qaList?.questions)
+                putString("questionTitle", title)
+            })
+    }
+
+    fun navigateToAnswerScreen(answerList: ArrayList<String>, title: String) {
+        requireActivity().findNavController(R.id.nav_host_fragment).navigate(
+            R.id.homeFragment_aAction1,
+            Bundle().apply {
+                putSerializable("questionList", answerList)
+                putString("questionTitle", title)
+            })
     }
 }
