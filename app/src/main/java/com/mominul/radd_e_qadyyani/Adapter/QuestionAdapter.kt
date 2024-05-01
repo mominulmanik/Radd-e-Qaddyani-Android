@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.mominul.radd_e_qadyyani.Model.QuestionAnswer
 import com.mominul.radd_e_qadyyani.R
+import com.mominul.radd_e_qadyyani.Utils.Constant
 
 class QuestionAdapter(private val dataSet: ArrayList<QuestionAnswer>): RecyclerView.Adapter<QuestionAdapter.ViewHolder>()  {
 

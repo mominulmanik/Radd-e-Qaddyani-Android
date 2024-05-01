@@ -23,6 +23,9 @@ class HomeAdapter(private val dataSet: ArrayList<String>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if (dataSet[position] == "কাদিয়ানী সংক্রান্ত সর্বাধিক মূল বিষয়") {
+            holder.textView.textSize = 21f
+        }
         holder.textView.text = dataSet[position]
         holder.qCardView.setOnClickListener {
             Log.d("TAG", "onBindViewHolder: $position")

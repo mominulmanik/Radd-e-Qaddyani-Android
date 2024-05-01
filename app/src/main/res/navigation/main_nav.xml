@@ -44,6 +44,13 @@
                 app:argType="string"
                 app:nullable="true"/>
         </action>
+        <action android:id="@+id/questionFragment_qAction1"
+            app:destination="@+id/questionFragment">
+            <argument
+                android:name="questionList"
+                app:argType="string[]"
+                app:nullable="true"/>
+        </action>
     </fragment>
     <fragment
         android:id="@+id/answerFragment"
