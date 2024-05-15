@@ -15,6 +15,7 @@ import com.mominul.radd_e_qadyyani.Model.QuestionAnswerList
 import com.mominul.radd_e_qadyyani.R
 import com.mominul.radd_e_qadyyani.Utils.Constant
 import com.google.gson.Gson
+import com.mominul.radd_e_qadyyani.Adapter.QuestionAdapter
 
 class HomeFragment : Fragment() {
 
@@ -34,109 +35,27 @@ class HomeFragment : Fragment() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mainTopicList = Constant().mainTopics
-        val homeAdapter = HomeAdapter(mainTopicList)
 
         val recyclerView: RecyclerView = view.findViewById(R.id.questionRV)
         recyclerView.setHasFixedSize(true);
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = homeAdapter
-        homeAdapter.onItemClick = {
-            if (it == 0) {
-                val qaList = readDataFromJson("qadyyani7.json")
+        val qaList = readDataFromJson("qadyyani_test.json")
+        val questionAdapter = qaList?.let { QuestionAdapter(it.questions) }
+        recyclerView.adapter = questionAdapter
+        questionAdapter?.onItemClick = {
+            if (qaList?.questions?.get(it)?.answer == null) {
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
                     R.id.homeFragment_qAction1,
                     Bundle().apply {
-                        putSerializable("questionList", qaList?.questions)
-                        putString("questionTitle", mainTopicList[it])
+                        putSerializable("questionList", qaList?.questions?.get(it)?.questions)
+                        putString("questionTitle", qaList?.questions?.get(it)?.question)
                     })
-            } else if (it == 1) {
+            } else {
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(
                     R.id.homeFragment_aAction1,
                     Bundle().apply {
-                        putStringArrayList("answerList", Constant().mainTopic1)
-                        putString("questionTitle", mainTopicList[it])
-                    })
-            } else if (it == 2) {
-                val ansList = readDataFromJson("qadyyani13.json")
-                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
-            } else if (it == 3) {
-                navigateToAnswerScreen(answerList = Constant().mainTopic4, mainTopicList[it])
-            } else if (it == 4) {
-                navigateToAnswerScreen(answerList = Constant().mainTopic2, mainTopicList[it])
-            } else if (it == 5) {
-                val qaList = readDataFromJson("qadyyani2.json")
-                requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_qAction1,
-                    Bundle().apply {
-                        putSerializable("questionList", qaList?.questions)
-                        putString("questionTitle", mainTopicList[it])
-                    })
-            } else if (it == 6) {
-                val ansList = readDataFromJson("qadyyani14.json")
-                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
-            } else if (it == 7) {
-                val qaList = readDataFromJson("qadyyani4.json")
-                requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_qAction1,
-                    Bundle().apply {
-                        putSerializable("questionList", qaList?.questions)
-                        putString("questionTitle", mainTopicList[it])
-                    })
-            } else if (it == 8) {
-                val ansList = readDataFromJson("qadyyani10.json")
-                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
-            } else if (it == 9) {
-                val qaList = readDataFromJson("qadyyani11.json")
-                navigateToQuestionScreen(qaList = qaList, mainTopicList[it])
-            } else if (it == 10) {
-                val ansList = readDataFromJson("qadyyani15.json")
-                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
-            } else if (it == 11) {
-                val ansList = readDataFromJson("qadyyani16.json")
-                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
-            } else if (it == 12) {
-                val ansList = readDataFromJson("qadyyani17.json")
-                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
-            } else if (it == 13) {
-                val ansList = readDataFromJson("qadyyani18.json")
-                ansList?.questions?.get(0)?.answer?.let { it1 -> navigateToAnswerScreen(answerList = it1, mainTopicList[it]) }
-            } else if (it == 14) {
-                val qaList = readDataFromJson("qadyyani12.json")
-                navigateToQuestionScreen(qaList = qaList, mainTopicList[it])
-            } else if (it == 15) {
-                navigateToAnswerScreen(answerList = Constant().mainTopic3, mainTopicList[it])
-            } else if (it == 16) {
-                val qaList = readDataFromJson("qadyyani9.json")
-                requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_aAction1,
-                    Bundle().apply {
-                        putStringArrayList("answerList", qaList?.questions?.get(0)?.answer)
-                        putString("questionTitle", mainTopicList[it])
-                    })
-            } else if (it == 17) {
-                val qaList = readDataFromJson("qadyyani5.json")
-                requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_qAction1,
-                    Bundle().apply {
-                        putSerializable("questionList", qaList?.questions)
-                        putString("questionTitle", mainTopicList[it])
-                    })
-            } else if (it == 18) {
-                val qaList = readDataFromJson("qadyyani6.json")
-                requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_aAction1,
-                    Bundle().apply {
-                        putSerializable("answerList", qaList?.questions?.get(0)?.answer)
-                        putString("questionTitle", mainTopicList[it])
-                    })
-            } else if (it == 19) {
-                val qaList = readDataFromJson("qadyyani8.json")
-                requireActivity().findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.homeFragment_qAction1,
-                    Bundle().apply {
-                        putSerializable("questionList", qaList?.questions)
-                        putString("questionTitle", mainTopicList[it])
+                        putStringArrayList("answerList", qaList.questions[it].answer)
+                        putString("questionTitle", qaList.questions[it].question)
                     })
             }
         }

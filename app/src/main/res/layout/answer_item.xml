@@ -15,9 +15,10 @@
         android:justificationMode="inter_word"
         android:autoLink="none"
         android:textColor="@color/black"
-        android:textSize="17sp"
+        android:textSize="15sp"
         android:paddingEnd="5dp"
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="RtlSymmetry"
+        android:paddingRight="5dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/answerWbTV"
@@ -28,7 +29,7 @@
         android:autoLink="none"
         android:textColor="@color/black"
         android:textSize="17sp"
-        android:paddingEnd="5dp"
+        android:paddingRight="5dp"
         tools:ignore="RtlSymmetry"
         android:visibility="gone"/>
 
@@ -36,7 +37,7 @@
         android:id="@+id/shareOptionll"
         android:layout_width="match_parent"
         android:layout_height="22dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:gravity="end"
         android:visibility="gone">
         <androidx.appcompat.widget.AppCompatImageView
