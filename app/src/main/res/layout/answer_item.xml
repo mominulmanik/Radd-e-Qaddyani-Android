@@ -15,7 +15,7 @@
         android:justificationMode="inter_word"
         android:autoLink="none"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="17sp"
         android:paddingEnd="5dp"
         tools:ignore="RtlSymmetry"
         android:paddingRight="5dp" />
